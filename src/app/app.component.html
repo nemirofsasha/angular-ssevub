@@ -1,0 +1,64 @@
+<section class="container">
+	<h1 class="mb-2">Grades</h1>
+    <div class="card p-4 mb-3">
+      
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="Student Name"
+          [(ngModel)]="newGrade.studentName"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          min="0"
+          max="6"
+          type="number"
+          class="form-control"
+          placeholder="Grade"
+          [(ngModel)]="newGrade.value"
+        />
+      </div>
+      <div class="form-group">
+        <label>
+          <input
+            type="checkbox"
+            class="mr-2"
+            [(ngModel)]="newGrade.completed"
+          />Completed
+        </label>
+      </div>
+      <button (click)="addGrade()" class="btn btn-primary btn-sm">Add</button>
+    
+  </div>
+
+  <section class="main" *ngIf="grades.length > 0">
+    <ul class="list-group">
+      <li *ngFor="let grade of sortedGrades" class="list-group-item">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <input
+              type="checkbox"
+              class="mr-2"
+              (click)="toggleGradeComplete(grade)"
+              [checked]="grade.completed"
+            />
+            <label>{{ grade.studentName }}, {{ grade.value.toFixed(2) }}</label>
+          </div>
+          <button
+            class="btn btn-outline-danger btn-sm"
+            (click)="removeGrade(grade)"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</section>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
