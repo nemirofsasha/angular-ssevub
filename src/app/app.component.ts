@@ -39,7 +39,7 @@ export class AppComponent  {
     this.grades = this.grades.filter((item: Grade) => item.id !== grade.id);
   }
 
-  get sortedGrades(): Grade[] {
+  get sorted(): Grade[] {
     return this.grades.sort((item: Grade) => -item.id);
   }
 }
